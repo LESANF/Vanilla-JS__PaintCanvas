@@ -1,0 +1,34 @@
+canvas.addEventListner("mousemove", onMouseMove)
+-> 캔버스에 마우스가 올라갔을때 onMouseMove 함수로 들어가게되고
+함수 안에는 정의한 const x,y가 캔버스 안의 좌표를 나타내주고 있다.
+
+캔버스를 클릭했을때 painting을 시작해야 한다.
+mousedown은 클릭했을때 일어나는 이벤트.
+
+마우스를 움직이면 좌표를 얻게되고 
+클릭하면 painting이 된다음. 마우스를 놓으면 다시 false로 설정.
+
+마우스로 그림을 그리다 손에서 땠을때 stopPainting이 되어야하고
+
+또 캔버스에서 마우스가 벗어 났을때 (mouseleave) 일때. stopPainting이 되어야함.
+
+그경우는 onMouseUp, mouseleave 일때이다.
+
+초기상태는 false이므로 바깥에 let painting = false;로 초기화한다.
+
+----------------------------------------------------------------
+canvas 태그에 대하여.
+
+HTML의 한 요소인데 다른점은 Context를 갖는다는 것. 
+
+Context라는것은 요소안에서 우리가 픽셀에 접근할 수 있는 방법이다.
+
+간단하게 context를 만들 수 있다. 
+
+context 변수를 만든다. 예를 들어
+-> 
+const canvas = document.getElementById('my-house');
+const ctx = canvas.getContext('2d);
+
+2D 뿐만 아니라 많은 context가 있다.
+
