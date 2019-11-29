@@ -22,9 +22,11 @@ function onMouseMove(event) {
   const x = event.offsetX;
   const y = event.offsetY;
   if (!painting) {
+    console.log(x, y);
     ctx.beginPath();
     ctx.moveTo(x, y);
   } else {
+    console.log(x, y);
     ctx.lineTo(x, y);
     ctx.stroke();
   }

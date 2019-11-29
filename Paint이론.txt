@@ -32,3 +32,17 @@ const ctx = canvas.getContext('2d);
 
 2D 뿐만 아니라 많은 context가 있다.
 
+canvas.width 와 canvas.height로 canvas의 크기를 나타내주어야 한다 꼭
+
+let painting = false로 초기화. 마우스가 클릭될때 true로 바꾸는 함수 실행
+
+function stopPainting(), function startPainting() 두가지로 painting = true, false설정
+
+if(canvas) 만약 canvas가 있을때. 아래 4가지 이벤트를 실행
+
+canvas.addEventListener(~~
+
+mousemove - canvas위에 마우스가 올라가있을때.
+mousedown - 마우스를 눌렀을때
+mouseup - 마우스를 눌렀다 땠을때
+mouseleave - canvas에서 마우스가 벗어났을때
