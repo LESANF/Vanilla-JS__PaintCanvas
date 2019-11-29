@@ -30,6 +30,9 @@ context 변수를 만든다. 예를 들어
 const canvas = document.getElementById('my-house');
 const ctx = canvas.getContext('2d);
 
+ctx.strokeStyle = "#2c2c2c"; (선의 색상)
+ctx.lineWidth = 2.5; (선의 굵기)
+
 2D 뿐만 아니라 많은 context가 있다.
 
 canvas.width 와 canvas.height로 canvas의 크기를 나타내주어야 한다 꼭
@@ -46,3 +49,58 @@ mousemove - canvas위에 마우스가 올라가있을때.
 mousedown - 마우스를 눌렀을때
 mouseup - 마우스를 눌렀다 땠을때
 mouseleave - canvas에서 마우스가 벗어났을때
+--------------------------------------------------------------------------------------------
+
+painting은 let변수로 선언되어있고 값은 false로 초기화 되어있다.
+
+canvas에 마우스가 올라가면 mousemove이벤트가 일어나고 onMouseMove함수로 이동.
+
+onMouseMove에서는 const x,y를 선언해 canvas내부의 x, y 좌표인 event.offsetX,Y를 저장
+
+다음 if 문 실행, if(!painting) ... painting이 false일경우, 
+ctx.beginPath();
+ctx.moveTo(x,y) 문장을 실행한다.
+
+beginPath()는 경로를 그리기위한 첫번째 단계이고
+moveTo(x,y)는 좌표 x,y로 펜을 이동하는 것이다.
+
+1. 클릭하지 않고 캔버스위에 마우스를 이동시키는 경우 beginPath()를 시작하는 거다.
+-> 마우스를 canvas에 올리면 onMouseMove함수가 실행되고 x,y 좌표를 담는다
+그리고 if문으로 들어간다 현재 상태는 false이기 때문에 beginPath()를 시작.
+
+path는 선이다.
+
+path를 만들면 마우스이 x,y 좌표로 path를 옮기는 것이다.
+
+(클릭하지않고 마우스를 canvas위에 움직일때 path가 만들어지고 있는것이다.)
+
+path의 시작점은 내 마우스가 있는 곳이다. 마우스를 움직이는 동안 많은 path들이
+
+만들어졌는데, 어떤 path들도 사용되어지지는 않았다.
+
+---------------------------------------------
+
+내가 클릭을 하면 mousedown 이벤트가 발생하고 statrPainting함수가 호출되어
+
+painting = true상태로 변경된다.
+
+클릭을하고도 내가 마우스를 움직이고 있다는것은 계속 onMouseMove함수가 실행되고 있는것이고
+
+painting이 true일때의 조건식인 else 부문으로 넘어가
+lineTo(x,y)를한다. 현재 드로잉위치에서 x,y로 지정된 위치까지 선을 그림.
+
+lineTo를 간단한게 설명하지면 path의 이 전 위치에서 지금 위치까지 선을 만드는 것이다.
+그리고 Stroke를 이용해 앞서 지정해둔 cavnas.StrokeStyle = "#2c2c2c" 인
+style의 색상으로 선을 그린다.
+
+/** 정리 ** /
+
+마우스는 항상 움직이고 있다 onMouseMove함수.
+하지만 지금은 painting = false이다. 왜냐, 클릭하고 있지 않으니까.
+그냥 path(선)만 만들고 있는 것이다. 동시에 패스를 움직이고 있는것이다
+마우스가 가는 곳으로 path를 움직인다. (moveTo는 펜을 지정된 좌표로 옮기는함수)
+
+여기 코드에서 lineTo와 stroke는 내가 마우스를 움직이는 내내 발생하는 것이다.
+-> painting이 true일때, 즉 마우스를 누르고 있을 경우를 말한다.
+
+onMouseMove는 끝나는 함수 개념이아닌 내가 마우스를 움직이는 내내 발생하는 함수.
