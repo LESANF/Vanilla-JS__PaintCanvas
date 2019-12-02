@@ -107,4 +107,24 @@ onMouseMove는 끝나는 함수 개념이아닌 내가 마우스를 움직이는
 
 false일때 path를 만들고있지만 (begin과 moveTo), 사용하진않는다
 
-여기서 마우스를 클릭하면 true가 되고 lineTO에의해 현재 위치에서 지정된 위치까지 선을그리고 이게 이어져서 우리눈에 그림판처럼 보이는것.
+여기서 마우스를 클릭하면 true가 되고 lineTo에의해 현재 위치에서 지정된 위치까지 선을그리고 이게 이어져서 우리눈에 그림판처럼 보이는것.
+
+------------------------------------
+< 색깔 지정 >
+
+상자들의 클래스인 jsColor을 getElementsByClassName("jsColor")으로 가져와
+const colors = doucument~~~ 로 colors를 변수선언해 내용을 담는다.
+
+getElement로 class를 가져올때 동일한 class가 여러개일경우 HTMLcollection 형태로나오고
+
+이를 배열로 만들기위해선 Array.from(colors)로 묶어주면 길이가9인 array형태로나온다.
+
+
+------------------------------------
+
+<FILL, SAVE 버튼>
+
+FILL
+-> FILL은 그리기 PAINT는 채우기, 색상클릭후 canvas클릭.
+일단 js파일에 버튼을 가져옴 
+const mode = document.getElementById("jsMode"); 

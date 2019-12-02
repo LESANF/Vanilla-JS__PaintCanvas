@@ -1,7 +1,7 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 const colors = document.getElementsByClassName("jsColor");
-const range = document.getElementById("jsRange");
+const range = document.getElementById("jsRange"); // input
 const mode = document.getElementById("jsMode");
 const saveBtn = document.getElementById("jsSave");
 
@@ -92,7 +92,7 @@ if (canvas) {
 }
 
 Array.from(colors).forEach(function(color) {
-  return color.addEventListener("click", handleColorClick);
+  color.addEventListener("click", handleColorClick);
 }); // forEach(color => color.addEventListener("click", handleColorClick) 과 같은의미
 //  es6에서 제공하는 간소화하는 방법이다.
 
