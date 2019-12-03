@@ -119,8 +119,86 @@ getElement로 class를 가져올때 동일한 class가 여러개일경우 HTMLco
 
 이를 배열로 만들기위해선 Array.from(colors)로 묶어주면 길이가9인 array형태로나온다.
 
+ 그리고 foreach는 array의 인자값 만큼 ( 여기선 9개니 9 ) callBackFunction이 반복된다.
 
-------------------------------------
+function의 매개변수명은 아무거나해도 된다 여기선 color로 지정. 
+
+foreach 함수안에 명령어로 console.log(color)을 호출해보면 
+
+브라우저에서 9개의 div가 순서대로 나타난다 
+
+이것에 대해 클릭했을때 색상이 바뀌도록 설정해야 하니 함수안에
+
+color.addEventListener("click" handleColorClick); 명렁.
+
+원하는 색상의 div를 눌렀을때 handleColorClick로 이동할 것이고.
+-> const color로 변수선언을한다 담기는 값은 event가 발생한 타겟의 backgroundColor을 담아야한다.
+
+경로는 event.target.style.backgroundColor에담겨있고 스타일의 배경색깔 값이 color에 담긴다.
+
+밖에서 설정해둔 ctx.strokeStyle=color, ctx.fillStyle=color로 오버라이딩 해준다 (덮어준다)
+
+strokeStyle은 초기 선의 색상이고, fillStyle은 화면을 채우기위해 만들어진 사각형의 색상을 뜻한다.
+
+여기까지가 색상변경이다
+
+-----------------------------------------------------------------------
+
+< input type="range", 브러쉬 굵기 조절 >
+
+if(range){
+~~} 의 range if 문을만든다.
+
+range가 true일 때, 즉 range가 존재할때 if문이 실행된다
+
+여기서 range는 밖에서 const range = document.getElementById("jsRange"); 로 input을 가져왔다.
+
+if문이 실행되면 range.addEventListener("input", handleRangeChange);  다음과같은 코드가 실행되고
+
+range로 바를 조절했을때 handleRangeChagne함수로 넘어간다. 함수로 넘어가기전에 한가지 인지하고 넘어가자.
+
+/*index.html의 html코드이다*/
+<input
+          type="range"
+          id="jsRange"
+          min="0.1"
+          max="5.0"
+          value="2.5"
+          step="0.1"
+ />
+
+=> input의 type은 range. (바로 좌우로 조절할 수 있는.), id는 jsRange, 여기서 min,max는 바조절의 최소, 최대로 갈수있는 수치이고 
+
+step은 min과 max 사이에서 움직일때 0.1씩 움직인다는 뜻. value는 초기값이라고 생각하면된다. range를 생성했을때 2.5의 값을 가지고 생성된다.
+
+다시 handleRangeChange함수로 넘어와서 "input"의 이벤트로 바가 움직였기때문에. 펜의 굵기를 바꿔야한다.
+
+선의 굵기는 ctx.lineWidth이고 밖에서 초기값은 ctx.lineWidth 2.5로 초기화 되어있다. 이값을 오버라이딩으로 바꾸면 선의 굵기가 바뀐다.
+
+함수내에 변수를하나 선언한다. -> const value = event.target.value; 조절바의 위치. 즉 range의 value값을 선언한 value에 넣는다.
+
+다음 ctx.lineWidth = value로 오버라이딩해서 선의 굵기를 바꿔준다 
+
+----------------------------------------------------------------------------------------------------------------------
+
+< FILL, PAINT 선그리기, 채우기 mode >
+
+range와 마찬가지로 if(mode) {~~ 로 mode가 true일때
+
+mode는 const mode = document.getElementById("jsMode"); 이다
+
+save옆의 버튼이고 한버튼에서 FILL, PAINT를 처리해야한다.
+
+버튼을 클릭했을때 handleModeClick 함수로 넘어감. (range와 동일)
+
+handleModeClick에서 filling이 true, false일때 조건으로 식을 써가야한다.
+
+여기서 filling이란 앞에서 painting = false, true설정 처럼 선을 그리는게아닌
+
+채우는 경우에 true, false로 계속 바껴야되기 때문에 밖에서 let filling = false로 초기 선언해둔다.
+
+
+
 
 <FILL, SAVE 버튼>
 
@@ -128,3 +206,4 @@ FILL
 -> FILL은 그리기 PAINT는 채우기, 색상클릭후 canvas클릭.
 일단 js파일에 버튼을 가져옴 
 const mode = document.getElementById("jsMode"); 
+
