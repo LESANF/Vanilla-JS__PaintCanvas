@@ -29,21 +29,24 @@ function startPainting() {
 }
 
 function onMouseMove(event) {
-  // canvas 위에서 움직일 때
   const x =
     event.offsetX ||
     event.touches[0].pageX - event.touches[0].target.offsetLeft;
   const y =
     event.offsetY || event.touches[0].pageY - event.touches[0].target.offsetTop;
   if (!painting) {
-    // painting이 false일 경우 if문 실행 true면 else문 실행
-    ctx.beginPath(); //경로를 만들기위한 첫번째 단계
-    ctx.moveTo(x, y); // 펜을 x, y로 지정된 좌표로 옮김.
+    ctx.beginPath();
+    ctx.moveTo(x, y);
   } else {
-    ctx.lineTo(x, y); // 현재 드로잉위치에서 x,y로 지정된 위치까지 선을 그림.
-    ctx.stroke(); //윤곽선을 이용하여 도형을 그림.
+    ctx.lineTo(x, y);
+    ctx.stroke();
   }
 }
+// painting이 false일 경우 if문 실행 true면 else문 실행
+//경로를 만들기위한 첫번째 단계
+// 펜을 x, y로 지정된 좌표로 옮김.
+// 현재 드로잉위치에서 x,y로 지정된 위치까지 선을 그림.
+//윤곽선을 이용하여 도형을 그림.
 
 function handleRangeChange(event) {
   const value = event.target.value;
@@ -62,7 +65,7 @@ function handleModeClick() {
     mode.innerText = "Fill";
   } else {
     filling = true;
-    mode.innerText = "Paint";
+    mode.innerText = "test";
   }
 }
 
