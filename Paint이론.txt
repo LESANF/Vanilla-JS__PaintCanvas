@@ -200,10 +200,54 @@ handleModeClick에서 filling이 true, false일때 조건으로 식을 써가야
 
 
 
-<FILL, SAVE 버튼>
+<FILL, PAINT 버튼>
 
 FILL
 -> FILL은 그리기 PAINT는 채우기, 색상클릭후 canvas클릭.
 일단 js파일에 버튼을 가져옴 
 const mode = document.getElementById("jsMode"); 
 
+if(mode) 로 {~} 시작.
+
+mode가 true일때 조건문돌림. 존재하니까 true
+
+mode.addEventListener("click", handleModeClick);
+
+버튼클릭했을때 handleModeClick 함수로 이동 이함수는 버튼을 클릭했을떄
+
+FILL, PAINT로 바뀌는 함수이다.
+
+filling는 현재 false.이고 else문을 실행한다.
+filling을 true로 바꾸고 버튼에 innerText = "Paint";로 Paint로 바꾼다.
+채우기 모드로 바꾸는것이다.
+
+다시 그리기 모드로 가고싶으면 또 버튼을누른다. 이때는 filling이 true이고
+innerText = "Fill"로 다시 버튼의 텍스트가 Fill이 된다.
+
+이제 PAINT일 경우 색상을 선택하고 canvas를 눌렀을때 색이 채워져야한다.
+
+if(canvas){ ~~로 돌아와서 canvas를 눌렀을때 색이 채워지는 이벤트작성.
+
+canvas.addEventListener("click", handleCanvasClicK);
+
+캔버스를 눌렀을때 handleCanvasClick 함수로이동.
+
+if(filling) { ~ }로 조건문을 돌릴 것이고. PAINT상태일때 즉 filling이 true.
+
+만약 filling가 false이면 아무일도 일어나지 않는다.
+
+fillRect 함수란 사각형을 만드는것이다. (arg1, arg2, arg3, arg4)가 있는데
+
+arg1,2는 좌표인데 좌측 상단 0,0을 기준의 위치이다.
+
+arg3,4는 width, height이다. 여기서 canvas의 크기를 700x700 로 정해줬기때문에
+
+똑같이 덮기위해 arg3, 4는 700x700으로한다. 700이란 변수를 많이 쓰기때문에. 
+
+밖에서 const CANVAS_SIZE = 700; 으로 선언해버린다.
+
+이렇게하여 filling가 true일때만 색이채워지는 함수 완성
+
+-------------------------------------
+
+< SAVE >

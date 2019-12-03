@@ -30,8 +30,11 @@ function startPainting() {
 
 function onMouseMove(event) {
   // canvas 위에서 움직일 때
-  const x = event.offsetX;
-  const y = event.offsetY;
+  const x =
+    event.offsetX ||
+    event.touches[0].pageX - event.touches[0].target.offsetLeft;
+  const y =
+    event.offsetY || event.touches[0].pageY - event.touches[0].target.offsetTop;
   if (!painting) {
     // painting이 false일 경우 if문 실행 true면 else문 실행
     ctx.beginPath(); //경로를 만들기위한 첫번째 단계
@@ -89,6 +92,11 @@ if (canvas) {
   canvas.addEventListener("mouseleave", stopPainting); // 캔버스에서 마우스커서가 벗어 났을때, stopPainting함수 실행
   canvas.addEventListener("click", handleCanvasClick);
   canvas.addEventListener("contextmenu", handleCM);
+  canvas.addEventListener("touchmove", onMouseMove);
+  canvas.addEventListener("touchstart", startPainting);
+  canvas.addEventListener("touchend", stopPainting);
+  canvas.addEventListener("touchleave", stopPainting);
+  canvas.addEventListener("touchcancel", stopPainting);
 }
 
 Array.from(colors).forEach(function(color) {
