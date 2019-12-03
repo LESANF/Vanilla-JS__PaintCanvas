@@ -65,7 +65,7 @@ function handleModeClick() {
     mode.innerText = "Fill";
   } else {
     filling = true;
-    mode.innerText = "test";
+    mode.innerText = "Paint";
   }
 }
 
