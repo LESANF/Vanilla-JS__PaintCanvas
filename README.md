@@ -9,5 +9,5 @@ https://lesanf.github.io/Vanilla-JS__PaintCanvas/
 
 # Result
 
-<img src="demo.gif" width="700" heigth="400">
+<img src="https://raw.githubusercontent.com/LESANF/Vanilla-JS__PaintCanvas/gh-pages/demo.gif" width="700" heigth="400">
 
